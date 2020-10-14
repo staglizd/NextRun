@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NextRun</string>
-    <string name="google_maps_key">AIzaSyCkwNLNFmpwazPKft1J2YIs2kLeoacSDA8</string>
+    <string name="google_maps_key">AIzaSyD7Y5QB4FhWDqXcloH01YuIONj0Oa9_IIo</string>
 
     <string-array name="filter_options">
         <item>Date</item>
