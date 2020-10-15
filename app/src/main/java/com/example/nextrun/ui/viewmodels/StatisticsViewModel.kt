@@ -7,4 +7,12 @@ import com.example.nextrun.repositories.MainRepository
 class StatisticsViewModel @ViewModelInject constructor(
     val mainRepository: MainRepository
 ): ViewModel() {
+
+    val totalTimeRun = mainRepository.getTotalTimeInMillis()
+    val totalDistance = mainRepository.getTotalDistance()
+    val totalCaloriesBurned = mainRepository.getTotalCaloriesBurned()
+    val totalAverageSpeed = mainRepository.getTotalAvgSpeed()
+
+    val runsSortedByDate = mainRepository.getAllRunsSortedByDate()
+
 }
