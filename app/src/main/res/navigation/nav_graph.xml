@@ -39,4 +39,8 @@
         android:id="@+id/statisticsFragment"
         android:name="com.example.nextrun.ui.fragments.StatisticsFragment"
         android:label="StatisticsFragment" />
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.example.nextrun.ui.fragments.FeedFragment"
+        android:label="FeedFragment" />
 </navigation>

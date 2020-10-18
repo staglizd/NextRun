@@ -68,9 +68,9 @@ class RunFragment: Fragment(R.layout.fragment_run), EasyPermissions.PermissionCa
             runAdapter.submitList(it)
         })
 
-        fab.setOnClickListener {
+        /*fab.setOnClickListener {
             findNavController().navigate(R.id.action_runFragment_to_trackingFragment)
-        }
+        }*/
     }
 
     private fun setupRecyclerView() = rvRuns.apply {
