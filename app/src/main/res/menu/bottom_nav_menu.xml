@@ -5,6 +5,13 @@
         android:title="Your Runs"
         android:icon="@drawable/ic_run" />
 
+    <item android:id="@+id/feedFragment"
+        android:title="Feed"
+        android:icon="@drawable/ic_feed" />
+
+    <item android:id="@+id/placeholder"
+        android:title="" />
+
     <item android:id="@+id/statisticsFragment"
         android:title="Statistics"
         android:icon="@drawable/ic_graph" />
