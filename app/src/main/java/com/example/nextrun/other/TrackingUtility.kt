@@ -64,4 +64,19 @@ object TrackingUtility {
                 "${if (milliseconds < 10) "0" else ""}$milliseconds"
 
     }
+
+    fun getFormattedDistance(distance: Float): String {
+        var distanceMeters = distance
+        var distanceString: String = ""
+        if (distanceMeters < 1000) {
+            // meters
+            distanceString = String.format("%.0f", distanceMeters)
+            return "${distanceString} m"
+        } else {
+            // kilometers
+            distanceMeters = distanceMeters / 1000f
+            distanceString = String.format("%.2f", distanceMeters)
+            return "${distanceString} km"
+        }
+    }
 }

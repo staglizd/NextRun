@@ -52,6 +52,8 @@ class TrackingService: LifecycleService() {
 
     var isFirstRun = true
     var serviceKilled = false
+    var locationLast: Location? = null
+    var locationNew: Location? = null
 
     @Inject
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -65,6 +67,7 @@ class TrackingService: LifecycleService() {
 
     companion object {
         val timeRunInMillis = MutableLiveData<Long>()
+        val distanceRunInMeters = MutableLiveData<Float>()
         val isTracking = MutableLiveData<Boolean>()
         val pathPoints = MutableLiveData<Polylines>()
     }
@@ -74,6 +77,7 @@ class TrackingService: LifecycleService() {
         pathPoints.postValue(mutableListOf())
         timeRunInSeconds.postValue(0L)
         timeRunInMillis.postValue(0L)
+        distanceRunInMeters.postValue(0f)
     }
 
     override fun onCreate() {
@@ -131,6 +135,7 @@ class TrackingService: LifecycleService() {
     private var timeRun = 0L
     private var timeStarted = 0L
     private var lastSecondTimestamp = 0L
+    private var distanceRun = 0f
 
     private fun startTimer() {
         addEmptyPolyline()
@@ -216,11 +221,36 @@ class TrackingService: LifecycleService() {
                 result?.locations?.let {locations ->
                     for (location in locations) {
                         addPathPoint(location)
-                        Timber.d("New location: ${location.latitude}, ${location.longitude}")
+
+                        locationNew = location
+                        if (locationLast == null) {
+                            locationLast = locationNew
+                        }
+
+//                        Timber.d("Old location: ${locationLast?.latitude}, ${locationLast?.longitude}")
+//                        Timber.d("New location: ${location.latitude}, ${location.longitude}")
+
+                        calculateDistance(locationLast, location)
+
+                        locationLast = location
                     }
                 }
             }
         }
+    }
+
+    private fun calculateDistance(locationLast: Location?, locationNew: Location?) {
+        val result = FloatArray(1)
+
+        Location.distanceBetween(locationLast!!.latitude, locationLast!!.longitude, locationNew!!.latitude, locationNew!!.longitude, result)
+
+        distanceRunInMeters.value?.apply {
+            distanceRun += result[0]
+            distanceRunInMeters.postValue(distanceRun)
+        }
+
+//        Timber.d("New distance: ${result[0]}")
+
     }
 
     private fun addPathPoint(location: Location?) {

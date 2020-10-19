@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemReselectedListener { /* NO-OP */ }
         bottomNavigationView.background = null
         bottomNavigationView.menu.getItem(2).isEnabled = false
-        
+
         navHostFragment.findNavController()
             .addOnDestinationChangedListener { _, destination, _ ->
                 when(destination.id) {
