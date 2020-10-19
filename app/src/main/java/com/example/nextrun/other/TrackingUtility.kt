@@ -7,6 +7,7 @@ import android.os.Build
 import com.example.nextrun.services.Polyline
 import pub.devrel.easypermissions.EasyPermissions
 import java.util.concurrent.TimeUnit
+import kotlin.math.round
 
 object TrackingUtility {
 
@@ -78,5 +79,24 @@ object TrackingUtility {
             distanceString = String.format("%.2f", distanceMeters)
             return "${distanceString} km"
         }
+    }
+
+    fun getFormattedPace(distance: Float, time: Long): String {
+        var milliseconds = time
+        val kilometers = distance / 1000f
+
+        var millisecondsPerKm = round(milliseconds / kilometers).toLong()
+
+        val minutes = TimeUnit.MILLISECONDS.toMinutes(millisecondsPerKm)
+        millisecondsPerKm -= TimeUnit.MINUTES.toMillis(minutes)
+
+        val seconds = TimeUnit.MILLISECONDS.toSeconds(millisecondsPerKm)
+
+        if (TimeUnit.MILLISECONDS.toSeconds(milliseconds) < 3) {
+            return "-:--"
+        }
+
+        return "${if (minutes < 10) "0" else ""}$minutes:" +
+                "${if (seconds < 10) "0" else ""}$seconds"
     }
 }
