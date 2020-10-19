@@ -45,6 +45,7 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
     private var map: GoogleMap? = null
 
     private var curTimeInMillis = 0L
+    private var curDistanceInMeters = 0f
 
     private var menu: Menu? = null
 
@@ -105,6 +106,12 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
             curTimeInMillis = it
             val formattedTime = TrackingUtility.getFormattedStopwatchTime(curTimeInMillis, true)
             tvTimer.text = formattedTime
+        })
+
+        TrackingService.distanceRunInMeters.observe(viewLifecycleOwner, Observer {
+            curDistanceInMeters = it
+            val formattedDistance = TrackingUtility.getFormattedDistance(curDistanceInMeters)
+            tvCurrentDistance.text = formattedDistance
         })
     }
 
