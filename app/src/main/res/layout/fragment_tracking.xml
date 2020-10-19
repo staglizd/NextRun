@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView">
 
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvTimerTitle"
             android:layout_width="wrap_content"
@@ -45,25 +46,30 @@
             android:id="@+id/tvCurrentDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.00 km"
-            android:textSize="50sp"
-            app:layout_constraintTop_toBottomOf="@id/tvTimer"
+            android:text="Dist"
+            android:textSize="36sp"
+            android:layout_marginStart="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCurrentPace"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="@+id/tvCurrentPace"
+            app:layout_constraintVertical_bias="0.5"
             />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCurrentDistanceTitle"
+            android:id="@+id/tvCurrentPace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Current distance"
-            android:textSize="10sp"
-            app:layout_constraintTop_toBottomOf="@id/tvCurrentDistance"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Pace"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnToggleRun"
@@ -74,7 +80,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btnFinishRun"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCurrentDistanceTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentDistance" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnFinishRun"

@@ -112,6 +112,9 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
             curDistanceInMeters = it
             val formattedDistance = TrackingUtility.getFormattedDistance(curDistanceInMeters)
             tvCurrentDistance.text = formattedDistance
+
+            val formattedPace = TrackingUtility.getFormattedPace(curDistanceInMeters, curTimeInMillis)
+            tvCurrentPace.text = formattedPace
         })
     }
 
