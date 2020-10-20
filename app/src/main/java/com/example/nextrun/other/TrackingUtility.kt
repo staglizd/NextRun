@@ -92,7 +92,7 @@ object TrackingUtility {
 
         val seconds = TimeUnit.MILLISECONDS.toSeconds(millisecondsPerKm)
 
-        if (TimeUnit.MILLISECONDS.toSeconds(milliseconds) < 3) {
+        if (TimeUnit.MILLISECONDS.toSeconds(milliseconds) < 3 && distance < 10f) {
             return "-:--"
         }
 

@@ -19,6 +19,7 @@ import com.example.nextrun.other.Constants.POLYLINE_WIDTH
 import com.example.nextrun.other.TrackingUtility
 import com.example.nextrun.services.Polyline
 import com.example.nextrun.services.TrackingService
+import com.example.nextrun.ui.MainActivity
 import com.example.nextrun.ui.viewmodels.MainViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -207,7 +208,9 @@ class TrackingFragment: Fragment(R.layout.fragment_tracking) {
             val avgSpeed = round ((distanceInMeters / 1000f) / (curTimeInMillis / 1000f / 60 / 60) * 10 ) / 10f
             val dateTimeStamp = Calendar.getInstance().timeInMillis
             val caloriesBurned = ( (distanceInMeters / 1000f) * weight ).toInt()
-            val run = Run(bmp, dateTimeStamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned, "username", "username_" + dateTimeStamp.toString())
+            val currentUsername = ((activity as MainActivity?)!!.auth.currentUser?.displayName ?: "username").replace(" ", "_")
+            val currentUserUid = ((activity as MainActivity?)!!.auth.currentUser?.uid ?: "username").plus("_")
+            val run = Run(bmp, dateTimeStamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned, currentUsername, currentUserUid + dateTimeStamp.toString())
 
             viewModel.insertRun(run)
             Snackbar.make(

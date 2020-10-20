@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1050152871864",
+    "firebase_url": "https://nextrun-292507.firebaseio.com",
+    "project_id": "nextrun-292507",
+    "storage_bucket": "nextrun-292507.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050152871864:android:e1858643c92ec8f0df914d",
+        "android_client_info": {
+          "package_name": "com.example.nextrun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050152871864-8na982icug7jgl66h3chnm7pehnecj1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIcqTH1JWAewyPxWnrYHhun25VjHwtNRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050152871864-8na982icug7jgl66h3chnm7pehnecj1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
